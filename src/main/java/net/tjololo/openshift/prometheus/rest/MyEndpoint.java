@@ -11,19 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class MyEndpoint {
-    private boolean ok = true;
+    public static boolean ok = true;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity<String> hello() {
-        if(ok) {
-            return new ResponseEntity<String>("Hello", HttpStatus.OK);
-        } else {
-            return new ResponseEntity<String>("BOO", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        return new ResponseEntity<String>("Hello", HttpStatus.OK);
     }
 
     @RequestMapping(value = "/toggle", method = RequestMethod.GET)
     public void toggle() {
-        this.ok = !this.ok;
+        MyEndpoint.ok = !MyEndpoint.ok;
     }
 }
