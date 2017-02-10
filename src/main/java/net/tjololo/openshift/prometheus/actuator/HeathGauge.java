@@ -20,7 +20,7 @@ public class HeathGauge extends Collector {
     }
 
     void addHealthUp(List<MetricFamilySamples> sampleFamilies) {
-        GaugeMetricFamily health = new GaugeMetricFamily("spring_boot_up", "Health status from spring boot actuator", Collections.singletonList("health"));
+        GaugeMetricFamily health = new GaugeMetricFamily("up", "Health status from spring boot actuator", Collections.singletonList("health"));
         health.addMetric(Collections.singletonList("all"), getHealth());
         sampleFamilies.add(health);
     }
