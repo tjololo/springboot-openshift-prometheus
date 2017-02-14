@@ -33,11 +33,12 @@ public class HeathGauge extends Collector {
     }
 
     private double getHealth() {
+        double health = 1;
         for (HealthIndicator healthChec : healthChecs) {
             if (healthChec.health().getStatus() != Status.UP) {
-                return 0;
+                throw new InternalError("Service is down");
             }
         }
-        return 1;
+        return health;
     }
 }
